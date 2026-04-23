@@ -1,0 +1,124 @@
+.button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-weight: 700;
+    border-radius: var(--radius-md);
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    text-align: center;
+    color: var(--color-bg);
+
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    outline: none;
+}
+
+/* Efecto presionado */
+.button:active:not(:disabled) {
+    transform: translate(-0.125rem, 0.125rem);
+    /* -2px, 2px */
+    box-shadow: 0px 0px 0px transparent;
+}
+
+/* Accesibilidad: Estado Focus visible para navegacion por teclado */
+.button:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 0.25rem;
+    /* 4px */
+}
+
+/* --- TAMAÑOS --- */
+.button--sm {
+    padding: var(--space-xs) var(--space-xl);
+    font-size: var(--text-base);
+}
+
+.button--md {
+    padding: 0.75rem 5rem;
+    font-size: var(--text-lg);
+    letter-spacing: 0.0625rem;
+}
+
+.button--lg {
+    padding: var(--space-md) 6.25rem;
+    /* 100px */
+    font-size: 2.5rem;
+    /* 40px */
+}
+
+/* --- VARIANTES  --- */
+.button--primary {
+    background-color: var(--color-primary);
+    /* Sombra para el efecto 3D */
+    box-shadow: -0.25rem 0.25rem 0px var(--color-secondary);
+    /* -4px 4px */
+    color: var(--color-white);
+}
+
+.button--primary:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+}
+
+.button--primary:active:not(:disabled) {
+    background-color: var(--color-primary-dark);
+}
+
+.button--secondary {
+    background-color: var(--color-secondary);
+    box-shadow: -0.25rem 0.25rem 0px var(--color-secondary-dark);
+    /* -4px 4px */
+}
+
+.button--secondary:hover:not(:disabled) {
+    filter: brightness(0.9);
+}
+
+.button--secondary:active:not(:disabled) {
+    background-color: var(--color-secondary-dark);
+}
+
+/* --- ESTADOS --- */
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    /* Al estar deshabilitado, lo dejamos en su estado original sin sombras */
+    transform: translate(-0.25rem, 0.25rem);
+    /* -4px 4px */
+    box-shadow: 0px 0px 0px transparent;
+}
+
+.button--loading {
+    cursor: wait;
+}
+
+/* --- ELEMENTOS (BEM Elements) --- */
+.button__text {
+    display: inline-block;
+}
+
+/* Animación del Spinner para estado loading */
+.button__spinner {
+    width: 1.5rem;
+    /* 24px */
+    height: 1.5rem;
+    /* 24px */
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: var(--color-bg);
+    border-radius: 50%;
+    animation: button-spin 1s linear infinite;
+}
+
+@keyframes button-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

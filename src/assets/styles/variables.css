@@ -1,0 +1,49 @@
+:root {
+    --color-primary: #1A7A83;
+    --color-primary-hover: #135A61;
+    --color-primary-dark: #0D3E43;
+
+    --color-secondary: #E8EC59;
+    --color-secondary-dark: #C6CA3F;
+
+    --color-bg: #1C1D3B;
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    /* Additional UI colors */
+    --color-surface: #FFF0C2;
+    /* Pale yellow from design */
+    --color-text-main: #1C1D3B;
+    --color-error: #D32F2F;
+
+    /* Spacing System (Base 16px) */
+    --space-xxs: 0.125rem;
+    /* 2px */
+    --space-xs: 0.25rem;
+    /* 4px */
+    --space-sm: 0.5rem;
+    /* 8px */
+    --space-md: 1rem;
+    /* 16px */
+    --space-lg: 1.5rem;
+    /* 24px */
+    --space-xl: 2rem;
+    /* 32px */
+
+    /* Typography */
+    --font-main: 'Montserrat', system-ui, sans-serif;
+    --text-base: 1rem;
+    /* 16px */
+    --text-lg: 1.25rem;
+    /* 20px */
+    --text-title: 2rem;
+    /* 32px */
+
+    /* Borders */
+    --radius-md: 0.5rem;
+    /* 8px */
+
+    /* Transitions */
+    --transition-fast: 0.1s ease;
+    --transition-normal: 0.3s ease-in-out;
+}

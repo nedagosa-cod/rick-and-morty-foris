@@ -1,14 +1,10 @@
-
-import './App.css'
+import './assets/styles/App.css';
+import { LoginForm } from './features/auth/components/LoginForm/LoginForm';
 
 function App() {
-
-
   return (
-    <>
-      <p>Hoooola</p>
-    </>
-  )
+    <LoginForm />
+  );
 }
 
-export default App
+export default App;
