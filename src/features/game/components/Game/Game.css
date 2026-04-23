@@ -1,0 +1,27 @@
+.game {
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    color: var(--color-white);
+    padding: var(--space-xl);
+}
+
+.game__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.game__board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: var(--color-surface);
+    color: var(--color-text-main);
+    border-radius: var(--radius-md);
+    font-size: var(--text-lg);
+    font-weight: bold;
+}

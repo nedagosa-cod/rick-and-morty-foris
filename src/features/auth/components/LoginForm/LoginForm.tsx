@@ -25,6 +25,11 @@ export const LoginForm = () => {
           />
         </figure>
         <form className="login__form" onSubmit={handleSubmit} noValidate>
+          {errors.form && (
+            <div className="login__error-banner" role="alert">
+              {errors.form}
+            </div>
+          )}
           <Input
             label="Usuario"
             id="username"

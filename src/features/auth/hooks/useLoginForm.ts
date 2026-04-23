@@ -1,10 +1,16 @@
 import { useState, type FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../../services/authService';
+import { useAuth } from '../context/AuthContext';
 
 export const useLoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState<{ username?: string; password?: string }>({});
+  const [errors, setErrors] = useState<{ username?: string; password?: string; form?: string }>({});
   const [isLoading, setIsLoading] = useState(false);
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const validate = () => {
     const newErrors: { username?: string; password?: string } = {};
@@ -23,13 +29,17 @@ export const useLoginForm = () => {
     if (!validate()) return;
 
     setIsLoading(true);
-    // Mock authentication
+    setErrors((prev) => ({ ...prev, form: undefined })); // Limpiar error general
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      // TODO: Handle successful login (e.g., save token, redirect)
-      console.log('Login successful', { username });
+      const response = await loginUser(username, password);
+      login(response.token, response.user);
+      navigate('/game', { replace: true });
     } catch (error) {
-      console.error('Login failed', error);
+      setErrors((prev) => ({ 
+        ...prev, 
+        form: error instanceof Error ? error.message : 'Error al iniciar sesión' 
+      }));
     } finally {
       setIsLoading(false);
     }
