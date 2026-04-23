@@ -22,6 +22,8 @@ export const LoginForm = () => {
             src="/src/assets/images/Rick_and_Morty.png"
             alt="Rick and Morty Logo"
             className="login__logo"
+            width="260"
+            height="130"
           />
         </figure>
         <form className="login__form" onSubmit={handleSubmit} noValidate>
@@ -62,14 +64,14 @@ export const LoginForm = () => {
               isLoading={isLoading}
               className="login__button"
             >
-              Iniciar sesión
+              Iniciar Sesión
             </Button>
           </div>
         </form>
         <div className="login__footer">
-          <a href="#" className="login__forgot-link">
+          <button type="button" className="login__forgot-link">
             ¿Olvidaste tu usuario o contraseña?
-          </a>
+          </button>
         </div>
       </div>
     </div>

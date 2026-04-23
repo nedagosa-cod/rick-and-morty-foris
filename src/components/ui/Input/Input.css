@@ -35,7 +35,11 @@
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.input__field:focus {
+.input__field:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.input__field:focus-visible {
     border-color: var(--color-primary-dark);
     box-shadow: 0 0 0 2px var(--color-primary);
 }
@@ -50,7 +54,7 @@
     border-color: var(--color-error);
 }
 
-.input__field--error:focus {
+.input__field--error:focus-visible {
     box-shadow: 0 0 0 2px var(--color-error);
 }
 

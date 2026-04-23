@@ -15,6 +15,9 @@
     color: var(--color-bg);
 
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.button:focus:not(:focus-visible) {
     outline: none;
 }
 
@@ -120,5 +123,13 @@
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button__spinner {
+        animation: none;
+        border-top-color: transparent;
+        border-right-color: var(--color-bg);
     }
 }

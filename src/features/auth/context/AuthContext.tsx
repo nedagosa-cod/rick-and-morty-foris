@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { createContext, useContext, useState, type ReactNode } from 'react';
 import type { User } from '../../../services/authService';
 
 interface AuthState {
@@ -63,7 +63,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Custom hook para consumir el contexto fácilmente
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
