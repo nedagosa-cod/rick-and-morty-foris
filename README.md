@@ -1,56 +1,72 @@
 # Rick and Morty Memory Game 🌌
 
-Una aplicación interactiva en **React** que permite a los usuarios autenticarse y poner a prueba su memoria con los personajes del universo de Rick and Morty.
+Una aplicación web interactiva desarrollada en **React** que permite a los usuarios autenticarse y poner a prueba su memoria con los personajes del universo de Rick and Morty.
 
-## 🚀 Características Principales
+---
 
-- **Autenticación de Usuario**: Sistema de login para registrar las puntuaciones o el progreso del jugador.
-- **Juego de Memoria (Match Pairs)**: Un clásico juego de encontrar las parejas utilizando las imágenes de los personajes de Rick and Morty.
-- **Consumo de API**: (Próximamente) Integración con la [Rick and Morty API](https://rickandmortyapi.com/) para obtener cartas dinámicas y variadas.
-- **Animaciones e Interfaz Moderna**: Construido pensando en una gran experiencia de usuario, interacciones fluidas y responsive design.
+## 🎯 Enfoque de Desarrollo
 
-## 🛠️ Tecnologías Utilizadas
+El proyecto fue construido bajo la filosofía de **Clean Architecture** y **Feature-Based Architecture**. El objetivo principal fue lograr un código altamente escalable, mantenible y profesional, evitando el acoplamiento y promoviendo la reutilización.
 
-- **Frontend**: React + TypeScript
-- **Bundler**: Vite
-- **Package Manager**: Bun
-- **Estilos**: CSS ya que no estoy seguro de si usar TailwindCSS por la recomendacion de la prueba tecnica por lo tanto para evitar usaré CSS.
+1. **Separación Estricta de Responsabilidades**: Toda la lógica de negocio, manejo de estados del juego y algoritmos complejos están centralizados en *Custom Hooks* (ej. `useGame.ts`, `useLoginForm.ts`, `useCharacters.ts`), dejando a los componentes de UI (como `Game.tsx` o `Card.tsx`) puramente presentacionales y tontos (*Dumb Components*).
+2. **Sistema de Diseño Consistente**: Se crearon componentes UI base y genéricos (`Button.tsx`, `Input.tsx`) tipados de manera estricta heredando de los atributos nativos de HTML para facilitar su uso global en toda la aplicación.
+3. **Escalabilidad**: Al agrupar archivos por "feature" (ej. `src/features/auth`, `src/features/game`), aseguramos que cada dominio de la aplicación viva de manera independiente, facilitando la adición de nuevas funcionalidades en el futuro sin generar colisiones.
 
-## 🏗️ Arquitectura y Metodologías
+---
 
-El proyecto sigue estándares estrictos para asegurar mantenibilidad y escalabilidad:
+## 🧠 Decisiones Técnicas y Razonamiento
 
-- **Feature-Based Architecture**: Organización por módulos/funcionalidades (ej. `src/features/auth`).
-- **Separación de Responsabilidades**: Lógica de negocio separada en Custom Hooks (`useLoginForm.ts`) pura y asilada de los componentes de UI.
-- **Componentes UI Reutilizables**: Componentes base compartidos (Botones, Inputs) centralizados en `src/components/ui`.
-- **CSS Puro y Metodología BEM**: Estilos escalables usando convención `Block__Element--Modifier` y un estricto sistema de Variables CSS (Custom Properties) sin "magic numbers".
+1. **GraphQL en lugar de REST API**:
+   - Para evitar el *Over-fetching*. Al consumir la [Rick and Morty GraphQL API](https://rickandmortyapi.com/graphql), solicitamos de forma granular exclusivamente los campos que el frontend necesita (`id`, `name`, `image`, `status`, `species`), mejorando la carga útil y el rendimiento.
 
-## 📝 Progreso Actual
+2. **Gestión de Estado Asíncrono con React Query**:
+   - En lugar de usar `useEffect` y estados locales como `isLoading` o `isError`, `@tanstack/react-query` maneja de forma declarativa el caché de red y las peticiones, simplificando drásticamente el flujo de red.
 
-- [x] **Setup Inicial**: Configuración del proyecto, tipado y variables globales de CSS.
-- [x] **UI Components**: Creación de componentes reutilizables base (`Button`, `Input` con toggle de password).
-- [x] **Feature - Login**: Implementación de la vista de autenticación (Frontend) basada en el diseño de Figma, validación de formularios y mock-auth.
-- [ ] **Feature - Registro**: Próxima implementación de la vista de creación de cuenta.
-- [ ] **Feature - Juego**: Tablero de memoria, control de turnos y puntuación.
-- [ ] **Integración de API**: Consumo de la API de Rick and Morty para cartas.
+3. **Aleatoriedad Rejugable Infinita**:
+   - Para asegurar que cada partida sea única, el hook `useCharacters.ts` calcula matemáticamente un número al azar (entre 1 y las 42 páginas disponibles de la API) al arrancar. Luego, toma aleatoriamente solo 6 personajes de dicha página para construir el tablero.
 
-## 🏃‍♂️‍➡️ Cómo correr el proyecto localmente
+4. **Algoritmo Fisher-Yates para el Barajado (Shuffle)**:
+   - Se descartó la mala práctica de utilizar `array.sort(() => Math.random() - 0.5)` ya que los motores V8 no garantizan uniformidad matemática. En su lugar, el algoritmo *Fisher-Yates* garantiza una distribución probabilística O(N) genuinamente aleatoria.
+
+5. **Animaciones 3D en CSS Puro (Sin Librerías)**:
+   - Para demostrar dominio profundo del DOM, en lugar de usar librerías como *Framer Motion*, se implementaron transformaciones 3D reales utilizando `perspective`, `transform-style: preserve-3d` y `backface-visibility`. Además, se implementó control por React del ciclo de vida de la animación inicial para evitar bugs de cascada visuales tras el barajado.
+
+6. **Estilos sin Frameworks UI**:
+   - Para cumplir estrictamente con los requerimientos, no se utilizaron herramientas como Tailwind o Bootstrap. Se empleó **CSS Puro** utilizando la **Metodología BEM (Block__Element--Modifier)** y Variables Nativas (CSS Custom Properties) para garantizar una hoja de estilos mantenible.
+
+7. **Gestión de Estado Global Simplificada con Zustand (Autenticación)**:
+   - Para demostrar el dominio de arquitecturas modernas de estado global, se migró el flujo de autenticación de React Context a **Zustand** (`useAuthStore.ts`). Zustand elimina el *boilerplate*, evita re-renderizados innecesarios y no requiere envolver la aplicación en un `<Provider>`. Este sistema gestiona un Token simulado almacenándolo en `localStorage`, replicando el comportamiento estándar de la industria (como JWT) para proteger rutas privadas y manejar persistencia de sesión sin necesidad de un backend real temporalmente.
+
+---
+
+## 🏃‍♂️‍➡️ Instrucciones para correr el proyecto
+
+### Prerrequisitos
+Asegúrate de tener instalados **Node.js** y **Bun** (el gestor de paquetes principal del proyecto). Puedes utilizar `npm` si prefieres, pero `bun` es recomendado.
+
+### Pasos
 
 1. **Clonar el repositorio** y acceder a la carpeta del proyecto:
    ```bash
-   git clone <url-del-repo>
+   git clone <url-del-repo-aqui>
    cd rick-and-morty-game
    ```
 
 2. **Instalar dependencias**:
    ```bash
-   npm install
+   bun install
    ```
-   *(Nota: También puedes usar `bun install` o `pnpm install` según tu entorno)*
 
 3. **Iniciar el servidor de desarrollo**:
    ```bash
-   npm run dev
+   bun dev
    ```
 
-4. Abre tu navegador y visita `http://localhost:5173` (o el puerto que te indique la terminal) para ver la aplicación corriendo.
+4. Abre tu navegador y visita `http://localhost:5173` (o el puerto que te indique la terminal) para interactuar con la aplicación.
+
+### Pruebas Unitarias
+Se ha implementado una suite de pruebas para los componentes base (como `<Button />`) utilizando **Vitest** y **React Testing Library**. Para ejecutar las pruebas, simplemente corre:
+
+```bash
+bun test
+```

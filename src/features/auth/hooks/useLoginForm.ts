@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../../services/authService';
-import { useAuth } from '../context/AuthContext';
+import { useAuthStore } from '../store/useAuthStore';
 
 export const useLoginForm = () => {
   const [username, setUsername] = useState('');
@@ -9,7 +9,7 @@ export const useLoginForm = () => {
   const [errors, setErrors] = useState<{ username?: string; password?: string; form?: string }>({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const { login } = useAuth();
+  const { login } = useAuthStore();
   const navigate = useNavigate();
 
   const validate = () => {
