@@ -2,13 +2,13 @@
     height: 100vh;
     overflow: hidden;
     background-color: var(--color-bg);
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-sm) var(--space-xl);
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 3rem;
     position: relative;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .game__header {
@@ -18,8 +18,8 @@
     flex-shrink: 0;
     margin-bottom: var(--space-sm);
     position: relative;
-    width: 30%;
-
+    width: 50%;
+    /* background-color: yellow; */
     gap: var(--space-lg);
     /* 1024px */
 }
@@ -120,7 +120,6 @@
     .game__grid {
         grid-template-columns: repeat(4, 1fr);
         gap: var(--space-md);
-        background-color: red;
     }
 }
 

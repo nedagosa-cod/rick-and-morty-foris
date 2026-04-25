@@ -15,7 +15,7 @@ export const useGame = (characters: Character[] | undefined, refreshCharacters?:
   
   // Game Logic States
   const [flippedCards, setFlippedCards] = useState<GameCharacter[]>([]);
-  const [matchedIds, setMatchedIds] = useState<number[]>([]);
+  const [matchedIds, setMatchedIds] = useState<string[]>([]);
   const [turns, setTurns] = useState(0);
 
   // Inicializa las cartas agregando un uniqueId para estabilizar el DOM de React durante el barajado
