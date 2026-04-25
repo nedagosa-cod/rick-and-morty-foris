@@ -5,6 +5,33 @@
     box-sizing: border-box;
 }
 
+/* --- Custom Scrollbar (Portal Style) --- */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #66BA4F !important;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #448C3F !important;
+}
+
+/* Firefox support */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #66BA4F var(--color-bg);
+}
+
 /* 2. Remove default margin */
 *:not(dialog) {
     margin: 0;

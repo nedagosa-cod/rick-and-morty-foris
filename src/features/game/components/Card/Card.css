@@ -122,11 +122,10 @@
     font-size: clamp(0.6rem, 7cqi, 1rem);
     color: var(--color-text-main);
     margin: 0;
-    line-height: 1.2;
+    line-height: 1;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .card__details {
