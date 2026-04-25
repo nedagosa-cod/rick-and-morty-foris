@@ -60,7 +60,7 @@ export const LoginForm = () => {
           <div className="login__actions">
             <Button
               type="submit"
-              variant="primary"
+              variant="primary-dark"
               size="md"
               isLoading={isLoading}
               className="login__button"

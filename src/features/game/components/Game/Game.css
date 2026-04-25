@@ -80,7 +80,7 @@
 
 .game__board {
     background-color: var(--color-surface);
-    width: 90%;
+    width: 80%;
     align-self: flex-start;
     border-radius: var(--space-md);
     padding: var(--space-md) var(--space-lg);

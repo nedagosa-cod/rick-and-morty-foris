@@ -6,7 +6,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * La variante visual del botón
    * @default 'primary'
    */
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'primary-dark' | 'secondary-dark' | 'error';
   /**
    * El tamaño del botón
    * @default 'md'

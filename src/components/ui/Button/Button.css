@@ -60,7 +60,7 @@
     /* Sombra para el efecto 3D */
     box-shadow: -0.25rem 0.25rem 0px var(--color-secondary);
     /* -4px 4px */
-    color: var(--color-white);
+    color: var(--color-text-main);
 }
 
 .button--primary:hover:not(:disabled) {
@@ -73,7 +73,7 @@
 
 .button--secondary {
     background-color: var(--color-secondary);
-    box-shadow: -0.25rem 0.25rem 0px var(--color-secondary-dark);
+    box-shadow: -0.25rem 0.25rem 0px var(--color-primary);
     /* -4px 4px */
 }
 
@@ -83,6 +83,40 @@
 
 .button--secondary:active:not(:disabled) {
     background-color: var(--color-secondary-dark);
+}
+
+.button--primary-dark {
+    background-color: var(--color-primary-dark);
+    box-shadow: -0.25rem 0.25rem 0px var(--color-secondary);
+    color: var(--color-white);
+}
+
+.button--primary-dark:hover:not(:disabled) {
+    filter: brightness(1.2);
+}
+
+.button--secondary-dark {
+    background-color: var(--color-secondary-dark);
+    box-shadow: -0.25rem 0.25rem 0px var(--color-secondary);
+    color: var(--color-text-main);
+}
+
+.button--secondary-dark:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+.button--error {
+    background-color: var(--color-error);
+    box-shadow: -0.25rem 0.25rem 0px #8B0000;
+    color: var(--color-white);
+}
+
+.button--error:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+.button--error:active:not(:disabled) {
+    background-color: #8B0000;
 }
 
 /* --- ESTADOS --- */

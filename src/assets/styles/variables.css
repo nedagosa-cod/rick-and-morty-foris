@@ -1,7 +1,7 @@
 :root {
-    --color-primary: #1A7A83;
-    --color-primary-hover: #135A61;
-    --color-primary-dark: #0D3E43;
+    --color-primary: #A2F2F9;
+    --color-primary-hover: #49D5E1;
+    --color-primary-dark: #1A7A83;
 
     --color-secondary: #E8EC59;
     --color-secondary-dark: #C6CA3F;
@@ -13,7 +13,7 @@
     /* Additional UI colors */
     --color-surface: #FFF0C2;
     /* Pale yellow from design */
-    --color-text-main: #1C1D3B;
+    --color-text-main: #233a5e;
     --color-error: #D32F2F;
 
     /* Spacing System (Base 16px) */

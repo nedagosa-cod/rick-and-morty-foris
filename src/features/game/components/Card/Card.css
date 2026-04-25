@@ -132,10 +132,9 @@
 .card__details {
     font-family: var(--font-main);
     /* Escala con el ancho de la card: min 0.5rem, fluido, max 0.75rem */
-    font-size: clamp(0.7rem, 5cqi, 0.75rem);
+    font-size: clamp(0.5rem, 5cqi, 0.75rem);
     color: var(--color-text-main);
     opacity: 0.8;
-    margin: var(--space-xs) 0 0 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
