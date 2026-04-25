@@ -6,6 +6,7 @@ import { useGame } from '../../hooks/useGame';
 import { Card } from '../Card/Card';
 import './Game.css';
 import logo from '../../../../assets/images/Rick_and_Morty.png';
+import Loader from '../Loader/Loader';
 
 export const Game = () => {
   const { logout } = useAuthStore();
@@ -33,7 +34,11 @@ export const Game = () => {
 
   return (
     <div className="game">
+
       <header className="game__header">
+        <div className='game__back-img'>
+          <Loader className='big' />
+        </div>
         <figure className="game__logo-container">
           <img
             src={logo}
@@ -73,7 +78,7 @@ export const Game = () => {
                 </header>
               )}
 
-              {isLoading && <p className="game__message">Cargando personajes...</p>}
+              {isLoading && <Loader text="Cargando personajes..." />}
               {isError && <p className="game__message">Error al cargar los personajes.</p>}
 
               {!isLoading && !isError && gameCards.length > 0 && (
