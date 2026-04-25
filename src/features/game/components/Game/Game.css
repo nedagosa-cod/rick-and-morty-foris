@@ -1,5 +1,5 @@
 .game {
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     background-color: var(--color-bg);
     padding: var(--space-md) var(--space-xl);
@@ -258,14 +258,15 @@
         min-width: 0;
         width: 100%;
         padding: var(--space-sm);
-        overflow-y: hidden;
         overflow-x: hidden;
+        overflow-y: auto;
     }
 
     .game__board {
         /* padding: var(--space-md) var(--space-md); */
         /* margin-top: var(--space-md); */
         width: 100%;
+
     }
 
     /* Grid columns handled by container query on .game__board */
