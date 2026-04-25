@@ -87,17 +87,20 @@ export const useGame = (characters: Character[] | undefined, refreshCharacters?:
   }, [gamePhase, flippedCards, matchedIds]);
 
   const resetGame = useCallback(() => {
-    setGamePhase('preview');
-    setShuffleState('idle');
+    // 1. Reset logic states
     setFlippedCards([]);
     setMatchedIds([]);
     setTurns(0);
-    // Vaciamos las cartas actuales para que el useEffect las reconstruya al recibir nuevos personajes
-    setGameCards([]);
+    setGamePhase('preview');
+
+    // 2. Refresh characters for a new game
     if (refreshCharacters) {
       refreshCharacters();
     }
-  }, [refreshCharacters]);
+
+    // 3. Automatically start the play flow (shuffle animation)
+    handlePlay();
+  }, [handlePlay, refreshCharacters]);
 
   const isGameOver = gameCards.length > 0 && matchedIds.length === gameCards.length / 2;
 
