@@ -91,7 +91,7 @@
 }
 
 .card__image-container {
-    padding: var(--space-md);
+    padding: var(--space-xs);
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;

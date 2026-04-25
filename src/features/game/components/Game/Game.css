@@ -2,11 +2,11 @@
     height: 100vh;
     overflow: hidden;
     background-color: var(--color-bg);
-    padding: var(--space-md) var(--space-xl);
+    padding: var(--space-sm) var(--space-xl);
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     position: relative;
     justify-content: center;
 }
@@ -27,7 +27,7 @@
 .game__logo-container {
     display: flex;
     align-items: center;
-    max-height: 180px;
+    max-height: 150px;
     width: 100%;
     justify-content: center;
     margin: 0 0 var(--space-sm) 0;
@@ -73,7 +73,7 @@
     max-width: 50rem;
     display: flex;
     justify-content: center;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 
@@ -82,10 +82,10 @@
     width: 100%;
     align-self: flex-start;
     border-radius: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-sm) var(--space-md);
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     /* Container query context: grid adapts to board width, not viewport */
     container-type: inline-size;
@@ -109,10 +109,10 @@
 
 .game__grid {
     display: grid;
-    /* min() prevents cards from overflowing on narrow boards */
-    grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+    /* 4 columns = 3 rows for 12 cards, optimal for vertical space */
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-sm);
-    padding: var(--space-sm) 0;
+    padding: var(--space-xs) 0;
 }
 
 /* Container query: 4 columns only when the board has enough room */
@@ -256,12 +256,12 @@
         min-width: 0;
         width: 100%;
         padding: var(--space-sm);
-        overflow-y: auto;
+        overflow-y: hidden;
         overflow-x: hidden;
     }
 
     .game__board {
-        padding: var(--space-md) var(--space-md);
+        padding: var(--space-xs) var(--space-md);
         margin-top: var(--space-md);
     }
 
