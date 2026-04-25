@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { Button } from '../../../../components/ui/Button/Button';
 import { Input } from '../../../../components/ui/Input/Input';
+import { Modal } from '../../../../components/ui/Modal/Modal';
 import { useLoginForm } from '../../hooks/useLoginForm';
 import './LoginForm.css';
 import logo from '../../../../assets/images/Rick_and_Morty.png';
 
 export const LoginForm = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     username,
     setUsername,
@@ -70,11 +73,35 @@ export const LoginForm = () => {
           </div>
         </form>
         <div className="login__footer">
-          <button type="button" className="login__forgot-link">
+          <button 
+            type="button" 
+            className="login__forgot-link"
+            onClick={() => setIsModalOpen(true)}
+          >
             ¿Olvidaste tu usuario o contraseña?
           </button>
         </div>
       </div>
+
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        title="Acceso de Prueba"
+      >
+        <div className="help-content">
+          <p>Esta es una aplicación de demostración con <strong>Mock Auth</strong>. Para ingresar, puedes usar cualquier usuario, pero te sugerimos los siguientes:</p>
+          <ul>
+            <li><strong>Usuario:</strong> rick</li>
+            <li><strong>Contraseña:</strong> pickle</li>
+          </ul>
+          <p>El sistema validará que los campos no estén vacíos y tengan el formato correcto.</p>
+          <div className="modal-footer">
+            <Button onClick={() => setIsModalOpen(false)} variant="primary">
+              ¡Entendido!
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
