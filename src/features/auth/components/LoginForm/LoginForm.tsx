@@ -2,6 +2,7 @@ import { Button } from '../../../../components/ui/Button/Button';
 import { Input } from '../../../../components/ui/Input/Input';
 import { useLoginForm } from '../../hooks/useLoginForm';
 import './LoginForm.css';
+import logo from '../../../../assets/images/Rick_and_Morty.png';
 
 export const LoginForm = () => {
   const {
@@ -19,7 +20,7 @@ export const LoginForm = () => {
       <div className="login__card">
         <figure className="login__logo-container">
           <img
-            src="/src/assets/images/Rick_and_Morty.png"
+            src={logo}
             alt="Rick and Morty Logo"
             className="login__logo"
             width="260"

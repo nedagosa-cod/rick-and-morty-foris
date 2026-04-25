@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import type { Character } from '../../api/queries';
 import './Card.css';
+import portalImg from '../../../../assets/images/rick-and-morty-portal.png';
 
 interface CardProps {
   character: Character;
@@ -53,7 +54,7 @@ export const Card = ({ character, onClick, isFlipped, isMatched, index, disableD
         {/* Back of the card (Face DOWN) */}
         <div className="card__back">
           <img
-            src="/src/assets/images/rick-and-morty-portal.png"
+            src={portalImg}
             alt="Dorso de carta"
             className="card__back-logo"
             width="120"

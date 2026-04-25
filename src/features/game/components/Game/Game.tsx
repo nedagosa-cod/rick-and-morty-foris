@@ -5,6 +5,7 @@ import { useCharacters } from '../../hooks/useCharacters';
 import { useGame } from '../../hooks/useGame';
 import { Card } from '../Card/Card';
 import './Game.css';
+import logo from '../../../../assets/images/Rick_and_Morty.png';
 
 export const Game = () => {
   const { logout } = useAuthStore();
@@ -35,7 +36,7 @@ export const Game = () => {
       <header className="game__header">
         <figure className="game__logo-container">
           <img
-            src="/src/assets/images/Rick_and_Morty.png"
+            src={logo}
             alt="Rick and Morty Logo"
             className="game__logo"
             width="800"
