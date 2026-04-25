@@ -103,6 +103,7 @@
     container-type: inline-size;
     container-name: board;
     margin: auto;
+    flex: 1;
 }
 
 .game__score-board {
