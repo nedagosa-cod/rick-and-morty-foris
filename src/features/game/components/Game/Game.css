@@ -263,8 +263,9 @@
     }
 
     .game__board {
-        padding: var(--space-md) var(--space-md);
-        margin-top: var(--space-md);
+        /* padding: var(--space-md) var(--space-md); */
+        /* margin-top: var(--space-md); */
+        width: 100%;
     }
 
     /* Grid columns handled by container query on .game__board */
