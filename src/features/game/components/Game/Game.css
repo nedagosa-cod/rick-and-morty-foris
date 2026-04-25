@@ -104,6 +104,7 @@
     container-name: board;
     margin: auto;
     flex: 1;
+    height: 97%;
 }
 
 .game__score-board {
@@ -285,7 +286,7 @@
         /* padding: var(--space-md) var(--space-md); */
         /* margin-top: var(--space-md); */
         width: 100%;
-
+        height: auto;
     }
 
     /* Grid columns handled by container query on .game__board */
